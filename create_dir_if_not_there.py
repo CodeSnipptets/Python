@@ -7,8 +7,11 @@
 
 # Description			: Checks to see if a directory exists in the users home directory, if not then create it
 
-import os												# Import the OS module
-home=os.path.expanduser("~")				# Set the variable home by expanding the users set home directory
-print home												# Print the location
-if not os.path.exists(home+'/testdir'):		# Check to see if the directory exists
-  os.makedirs(home+'/testdir')					# If not create the directory, inside their home directory
+import os # Import the OS module
+try:
+  home=os.expanduser("~") 	# Set the variable home by expanding the users set home directory
+  print home 	# Print the location
+  if not os.path.exists(home+"/testdir"): # Check to see if the directory exists
+    os.makedirs(home+"/testdir") # If not create the directory, inside their home directory
+  except Exception as e:
+    print e
